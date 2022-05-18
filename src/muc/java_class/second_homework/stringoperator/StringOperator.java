@@ -57,6 +57,7 @@ public class StringOperator {
                 System.out.println("please input again:");
                 pwd = sc.nextLine();
             } else {
+                System.out.println("your passworld is legal");
                 break;
             }
         }
