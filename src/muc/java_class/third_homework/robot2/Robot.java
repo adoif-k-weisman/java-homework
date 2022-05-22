@@ -55,11 +55,11 @@ public class Robot implements Serializable {
 
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return Objects.hash(name, weight, numLegs, powerLevel, color);
+        return Objects.hash(name, weight, numLegs, color);
     }
-*/
+
     public Robot(String name, float weight, int numLegs, float powerLevel, String color1) {
         this.name = name;
         this.weight = weight;

@@ -16,10 +16,19 @@ public class RobotController {
         TranslationRobot translationRobot1 = new TranslationRobot("tran_one", 3, 2, 20, "pink");
         TranslationRobot translationRobot2 = new TranslationRobot("tran_two", 2, 2, 30, "red");
 
+        //test carry function
+        carrierRobot1.carry(200);
+        System.out.println("------------------------");
+        carrierRobot1.carry(70);
+
         abstractRobots.add(carrierRobot1);
         abstractRobots.add(carrierRobot2);
         abstractRobots.add(translationRobot1);
         abstractRobots.add(translationRobot2);
+
+        //test translate function
+        abstractRobots.get(2).talk("Test translation function", "hello java world", "Java is the best language in the world");
+
 
         //test talk
         System.out.println("test talk function:");
@@ -45,16 +54,24 @@ public class RobotController {
         for (AbstractRobot ab : abstractRobots) {
             System.out.println(ab);
         }
-        /*
+
         //采用方法的多态性，显示出不同的greet语句和颜色。
+        /*
         for (AbstractRobot ab : abstractRobots) {
             ab.greet();
             ab.color();
             System.out.println("------------------------------");
         }*/
-        //abstractRobots.get(0).greet();
-        //abstractRobots.get(2).greet();
 
+        /*
+        //sample test 多态
+        System.out.println("sample test 多态");
+        abstractRobots.get(0).greet();
+        abstractRobots.get(0).color();
+        System.out.println("------------------------------");
+        abstractRobots.get(2).greet();
+        abstractRobots.get(2).color();
+*/
 
         System.out.println("Next test robot World and crudRobot implements method :");
         start();

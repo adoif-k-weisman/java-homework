@@ -9,49 +9,6 @@ public class RobotWorld implements crudRobot<AbstractRobot, AbstractRobot> {
 
     //private static ArrayList<AbstractRobot> abstractRobots = new ArrayList<>();
     private BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-    /*
-    public static void main(String[] args) {
-
-        //定义一个AbstractRobot数组及几个不同种类机器人对象，
-        CarrierRobot carrierRobot1 = new CarrierRobot("carr_one", 100, 4, 10, Color.black);
-        CarrierRobot carrierRobot2 = new CarrierRobot("carr_two", 120, 4, 12, Color.blue);
-
-        TranslationRobot translationRobot1 = new TranslationRobot("tran_one", 3, 2, 20, Color.pink);
-        TranslationRobot translationRobot2 = new TranslationRobot("tran_two", 2, 2, 30, Color.red);
-
-        abstractRobots.add(carrierRobot1);
-        abstractRobots.add(carrierRobot2);
-        abstractRobots.add(translationRobot1);
-        abstractRobots.add(translationRobot2);
-
-        //test talk
-        System.out.println("test talk function:");
-        System.out.println("robot1:");
-        abstractRobots.get(0).talk("As time goes by  ", "are you ok?");
-        System.out.println("robot2:");
-        abstractRobots.get(1).talk("maybe not bad ", "but I think ....", "  with tears, with silence");
-        System.out.println("robot3:");
-        abstractRobots.get(2).talk("yes,life is the hero narrative poem");
-
-        System.out.println("abstractRobots数组未排序前:");
-        //System.out.println(abstractRobots);
-
-        System.out.println("按照机器人的powerLevel数量进行排序后:");
-        Collections.sort(abstractRobots, new RobotPowerComparator());
-        //System.out.println(abstractRobots);
-        System.out.println("按照机器人的numLegs数量进行排序后:");
-        Collections.sort(abstractRobots, new RobotLegsComparator());
-        System.out.println(abstractRobots);
-
-        //采用方法的多态性，显示出不同的greet语句和颜色。
-        for (AbstractRobot ab : abstractRobots) {
-            ab.greet();
-            ab.color();
-        }
-
-
-    }
-*/
 
     //get factory  可以进一步优化！！！降低耦合
     @Override
@@ -103,6 +60,7 @@ public class RobotWorld implements crudRobot<AbstractRobot, AbstractRobot> {
         for (AbstractRobot r : robot) {
             if (r.equals(t)) {
                 robot.remove(r);
+                return;
             }
         }
     }
@@ -224,7 +182,7 @@ public class RobotWorld implements crudRobot<AbstractRobot, AbstractRobot> {
         ArrayList<AbstractRobot> robotArrayList = new ArrayList<>();
         try {
             ois = new ObjectInputStream(new FileInputStream(fileName));
-            //进行强转
+            //进行类型转换
             robotArrayList = (ArrayList<AbstractRobot>) ois.readObject();
         } catch (IOException e) {
             e.printStackTrace();

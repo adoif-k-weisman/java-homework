@@ -36,6 +36,8 @@ public class CarrierRobot extends AbstractRobot {
     void carry(float capacity) {
         if (super.getWeight() < capacity) {
             System.out.println("Error : Overload! please reduce the capacity.");
+        } else {
+            System.out.println("a piece of cake.This weight is easy for me to carry");
         }
     }
 

@@ -39,13 +39,13 @@ public class TranslationRobot extends AbstractRobot {
         for (String s : strings) {
             super.talk(s);
             //翻译操作 模拟过程
-            translate("翻译后:" + s);
+            translate(s);
         }
     }
 
     //模拟实现翻译的功能，即talk时实现“翻译”原有的phase替换为substitute。
     void translate(String substitute) {
-        System.out.println(substitute);
+        System.out.println("翻译后:" + substitute);
     }
 
     //重写charge(float amount)方法，实现双倍的充电
