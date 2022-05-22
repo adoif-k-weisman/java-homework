@@ -70,8 +70,7 @@ public class Car {
             info += " not rented";
         return info;
     }
-
-    //重写的必要？
+    
     //carID就是唯一标识
     @Override
     public boolean equals(Object o) {

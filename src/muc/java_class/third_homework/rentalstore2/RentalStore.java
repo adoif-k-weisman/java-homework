@@ -52,9 +52,15 @@ public class RentalStore {
         firstStore.addCar(new Car("Toyota", "2022-02-22"));
 
         //use carId as identification to judge have or not
-        //firstStore.addCar(new Car("Toyota", "2024-02-22"));
-        //firstStore.printAvailableCars();
+        firstStore.addCar(new Car("Toyota", "2024-02-22"));
+        firstStore.addCar(new Car("Porsche_", "2021-10-31"));
+        firstStore.addCar(new Car("Porsche", "2022-10-30"));
+        System.out.println("===========================================================");
+        System.out.println("add Car test 去重 , 运行结果:");
+        firstStore.printAvailableCars();
 
+
+/*
         //add 3 cars to the second store
         secondStore.addCar(new Car("HUMMER", "2021-04-03"));
         secondStore.addCar(new Car("Maybach", "2021-05-05"));
@@ -91,7 +97,7 @@ public class RentalStore {
 
         // Print the car IDs of available cars from the first store
         System.out.println("Cars available in the first store:");
-        firstStore.printAvailableCars();
+        firstStore.printAvailableCars();*/
 
 
     }
