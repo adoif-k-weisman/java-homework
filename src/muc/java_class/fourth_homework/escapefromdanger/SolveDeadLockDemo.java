@@ -2,43 +2,15 @@ package muc.java_class.fourth_homework.escapefromdanger;
 
 public class SolveDeadLockDemo {
     public static void main(String[] args) {
-        Object director = new Object();
-        Object actor = new Object();
+        Account director = new Account("导演", 500000);
+        Account actor = new Account("演员一号", 30000);
+        Runnable dirToAct = new TranferThread(director, actor, 2000);
+        Runnable actToDir = new TranferThread(actor, director, 3000);
 
-        //0x7954
-        new Thread(() -> {
-            while (true) {
-                synchronized (director) {
-                    System.out.println("导演账户取出3000元");
-                    try {
-                        Thread.sleep(300);//模拟线程中断    需要等待抢到CPU执行权
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    //线程一 从导演向演员转账
-                    synchronized (actor) {
-                        System.out.println("导演成功向演员转账3000元");
-                    }
-                }
-            }
-        }).start();
+        //二个线程运行
+        //转账过程并非一定需要等待-通知机制，那么不用wait()和notifyall()方法也行
+        new Thread(dirToAct).start();
+        new Thread(actToDir).start();
 
-        //0X3704
-        new Thread(() -> {
-            while (true) {
-                synchronized (actor) {
-                    System.out.println("演员账户取出40000元");
-                    try {
-                        Thread.sleep(300);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    //线程二 从演员向导演转账
-                    synchronized (director) {
-                        System.out.println("演员向导演转账40000元");
-                    }
-                }
-            }
-        }).start();
     }
 }
