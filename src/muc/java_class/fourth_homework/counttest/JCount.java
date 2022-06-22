@@ -7,12 +7,12 @@ import java.awt.event.ActionEvent;
 
 public class JCount extends JPanel {
     private workThread oneCountThread;
-    static int programRunning;
+    //    static int programRunning;
     private JButton start;
     private JButton stop;
     private JTextField numTxt;//input num
     private JLabel numLabel;// show num when stop
-    public static JPanel panel;// panel to panel  避免布局重复
+    public static JPanel panel;// panel add to panel  避免布局重复
     public static JFrame frame; //
     int oneCountRunning = 0;
 
@@ -21,7 +21,7 @@ public class JCount extends JPanel {
     public JCount() {
 
         oneCountThread = new workThread();
-        programRunning = 0;
+//        programRunning = 0;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         start = new JButton("start");
         start.addActionListener(new AbstractAction() {
@@ -56,7 +56,6 @@ public class JCount extends JPanel {
                 oneCountThread.start();
 
             }
-            programRunning = 1;
         }
         oneCountRunning = 1;
     }
@@ -64,22 +63,17 @@ public class JCount extends JPanel {
     //已经计数到了输入的数字
     public void endCount() throws InterruptedException {
         if (oneCountThread.end(Integer.parseInt(numTxt.getText()))) {
-//        if (oneCountThread.end(Long.getLong(numTxt.getText()))) {
             oneCountThread.interrupt();
-//            programRunning += 1;
             oneCountRunning = 0;
         }
     }
 
     //每数到10,000，Worker Thread会睡眠100 milliseconds
     public void countSleep() {
-//        if (oneCountThread.flagRe()) {
         if (oneCountThread.isUpdateLabel()) {
             try {
                 oneCountThread.sleep(100);
-                numLabel.setText(String.valueOf(oneCountThread.returnI()));//更新Label数字
-                programRunning = 1;
-//                oneCountThread.returnflag(false);
+                numLabel.setText(String.valueOf(oneCountThread.getCurNum()));//更新Label数字
                 oneCountThread.setUpdateLabel(false);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -99,7 +93,6 @@ public class JCount extends JPanel {
         frame.setBounds(550, 50, 200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new JPanel();
-
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
     }
@@ -146,9 +139,6 @@ public class JCount extends JPanel {
                 Thread.sleep(1000);
                 frame.setVisible(false);
                 frame.dispose();
-            }*/
-            /*if (countRunning == 1) {
-                frame.setVisible(true);
             }*/
         }
     }
