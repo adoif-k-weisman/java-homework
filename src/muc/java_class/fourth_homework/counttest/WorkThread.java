@@ -7,7 +7,7 @@ package muc.java_class.fourth_homework.counttest;
 
 一旦Worker Thread创建，立即从0开始计数到Text Field中输入的数，每数到10,000，Worker Thread会睡眠100 milliseconds，
  */
-public class workThread extends Thread {
+public class WorkThread extends Thread {
     private int slowNum;
     private int fastNum;
     private int tempNum;
@@ -30,7 +30,7 @@ public class workThread extends Thread {
 
     }
 
-    public workThread() {
+    public WorkThread() {
         slowNum = 0;
         fastNum = 0;
     }

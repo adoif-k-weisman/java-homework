@@ -9,10 +9,10 @@ import java.util.concurrent.TimeUnit;
 //消费者，产生子线程处理任务
 public class Bank extends Thread {
     //存放银行账户
-    ArrayList<Account> allAccount = new ArrayList<>();
-    ArrayBlockingQueue<String> transferInfo;
+    private ArrayList<Account> allAccount = new ArrayList<>();
+    private ArrayBlockingQueue<String> transferInfo;
 
-    ThreadPoolExecutor threadPoolExecutor;
+    private ThreadPoolExecutor threadPoolExecutor;
 
 
     public Bank(ArrayBlockingQueue<String> transferInfo) {
